@@ -6,7 +6,7 @@
 
     <groupId>com.techprimers.testing</groupId>
     <artifactId>jenkins-example</artifactId>
-    <version>1.0-jenkin</version>
+    <version>1.0</version>
 
 
     <properties>
