@@ -22,7 +22,7 @@ pipeline
         stage("publish to nexus") {
             steps {
                 echo "publish to Nexus...."
-                sh 'mvn deploy -Did=nexus -Dname=maven-test -Durl=http://192.168.1.76:8078/repository/maven-test/'
+                sh 'mvn -Dmaven.install.skip=true deploy -Did=nexus -Dname=maven-test -Durl=http://192.168.1.76:8078/repository/maven-test/'
             }
         }
 
