@@ -1,32 +1,33 @@
-pipeline {
+pipeline
+{
     agent any
 
     stages {
-        stage ('Compile Stage') {
 
+        stage('checkout') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
-                }
+
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Muthu140218/jenkins-example.git']]])
+
+            }
+        }
+        stage('compile') {
+             steps {
+                echo "Compiling code...."
+                sh 'mvn --version'
+                sh 'mvn -Dmaven.test.skip=true clean install'
+             }
+        }
+
+        stage("publish to nexus") {
+            steps {
+                echo "publish to Nexus...."
+                sh 'mvn deploy -Did=nexus -Dname=maven-test -Durl=http://192.168.1.76:8078/repository/maven-test/'
             }
         }
 
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn deploy'
-                }
-            }
-        }
     }
+
 }
+
+
