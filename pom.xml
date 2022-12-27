@@ -6,7 +6,7 @@
 
     <groupId>com.techprimers.testing</groupId>
     <artifactId>jenkins-example</artifactId>
-    <version>1.0-jenkin</version>
+    <version>1.0</version>
 
 
     <properties>
@@ -64,9 +64,11 @@
 
     <distributionManagement>
         <repository>
-            <id>myMavenRepo.write</id>
-            <url>https://mymavenrepo.com/repo/9Q8JoRpymi4UGK8HzbVq/</url>
+            <id>nexus</id>
+            <name>maven-test</name>
+            <url>http://192.168.1.76:8087/repository/maven-test/</url>
         </repository>
     </distributionManagement>
+
 
 </project>
