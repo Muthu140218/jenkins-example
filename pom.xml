@@ -6,7 +6,7 @@
 
     <groupId>com.techprimers.testing</groupId>
     <artifactId>jenkins-example</artifactId>
-    <version>2.0</version>
+    <version>3.0</version>
 
 
     <properties>
@@ -64,9 +64,9 @@
 
     <distributionManagement>
         <repository>
-            <id>${id}</id>
-            <name>${name}</name>
-            <url>${url}</url>
+            <id>${NEXUS_ID}</id>
+            <name>${NEXUS_NAME}</name>
+            <url>${NEXUS_URL}</url>
         </repository>
     </distributionManagement>
 
