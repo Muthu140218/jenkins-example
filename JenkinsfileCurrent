@@ -2,7 +2,6 @@ pipeline
 {
     agent any
 
-
     stages {
 
         stage('checkout') {
@@ -20,10 +19,10 @@ pipeline
              }
         }
 
-        stage("Create Image") {
+        stage("publish to nexus") {
             steps {
-                echo "Docker image creation...."
-                sh 'mvn docker:build'
+                echo "publish to Nexus...."
+                sh 'mvn deploy -DdeployOnly'
             }
         }
 
