@@ -30,6 +30,7 @@ pipeline
         stage("Publish Docker Image to Nexus") {
             steps {
                 echo "Publish image to nexus...."
+                sh 'docker login -u admin -p admin'
                 sh 'mvn docker:push'
             }
          }
