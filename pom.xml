@@ -37,6 +37,36 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.40.1</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>docker-push</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <autoPull>true</autoPull>
+                    <registry>192.168.1.76:8085</registry>
+                    <images>
+                        <image>
+                            <name>%a:%v</name>
+                            <build>
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                    <targetDir>target</targetDir>
+                                </assembly>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
