@@ -27,6 +27,13 @@ pipeline
             }
         }
 
+        stage("Publish Docker Image to Nexus") {
+            steps {
+                echo "Publish image to nexus...."
+                sh 'mvn docker:push'
+            }
+         }
+
     }
 
 }
